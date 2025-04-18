@@ -9,8 +9,18 @@ const ControlledField = () => {
 
     let [password,setPassword] =useState("");
 
+    let[error,setError] =useState("");
+
     const handlePasswordOnChange=e=>{
-           console.log(e.target)
+           console.log(e.target.value);
+           setPassword(e.target.value);
+
+           if(password.length<6){
+            setError('password must be 6 character');
+           }
+           else{
+            setError("");
+           }
     }
     return (
         <div>
@@ -20,6 +30,9 @@ const ControlledField = () => {
 
                 <input type="submit" value="submit" />
             </form>
+            <p style={{color:'red'}}>
+                <small>{error}</small>
+            </p>
         </div>
     );
 };
